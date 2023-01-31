@@ -1,8 +1,10 @@
+// 词法定义
+
 package token
 
 const NoPos = 0
 
-// Token Represents a single parsed token.
+// Token 保存词法分析的结果.
 type Token struct {
 	Kind     Kind
 	Value    interface{}

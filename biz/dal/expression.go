@@ -1,3 +1,5 @@
+// 操作数据库表, 增删改查
+
 package dal
 
 type Expression struct {

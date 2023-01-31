@@ -1,3 +1,5 @@
+// 词法定义
+
 package token
 
 import (
@@ -6,7 +8,7 @@ import (
 	"strconv"
 )
 
-// Kind Represents all valid types of tokens that a token can be.
+// Kind 一个 Token 可以是所有有效的 Token 类型.
 type Kind int
 
 const (

@@ -1,3 +1,5 @@
+// 抽象语法树定义
+
 package executor
 
 import (
@@ -21,10 +23,10 @@ type Node struct {
 
 // NewNodeWithPrefixFix The symbol `+` - can represent both unary and binary operators,
 // and the priority of the operator is unique and needs to be adjusted on a case-by-case basis
-// - In abstract syntax tree, if the left subtree of the node is empty and the right subtree is not empty,
-//   it can be judged to be a negative sign. The symbol needs to be corrected
-// - If the right subtree of the right subtree is a symbol other than the prefix symbol [+、-],
-//	  The node order needs to be corrected
+//   - In abstract syntax tree, if the left subtree of the node is empty and the right subtree is not empty,
+//     it can be judged to be a negative sign. The symbol needs to be corrected
+//   - If the right subtree of the right subtree is a symbol other than the prefix symbol [+、-],
+//     The node order needs to be corrected
 func NewNodeWithPrefixFix(right *Node, symbol Symbol, value interface{}) *Node {
 	needFixed := needFixedSymbol[symbol]
 	if !needFixed {

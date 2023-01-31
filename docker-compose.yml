@@ -3,6 +3,7 @@ version: '3'
 services:
   mysql:
     image: 'mysql:latest'
+    container_name: 'easy_rule_engine_mysql'
     volumes:
       - ./biz/dal/sql:/docker-entrypoint-initdb.d
     ports:

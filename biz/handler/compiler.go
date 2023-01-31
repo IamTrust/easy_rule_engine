@@ -5,6 +5,7 @@ import (
 	"github.com/trust/easy_rule_engine/executor"
 )
 
+// Compiler 编译表达式, 生成语法树, 返回语法树的根节点
 func Compiler(exp string) (*executor.Node, error) {
 	tokenScanner := compiler.NewScanner(exp)
 	tokens, err := tokenScanner.Lexer()

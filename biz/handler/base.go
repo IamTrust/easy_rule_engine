@@ -4,6 +4,7 @@ import (
 	"github.com/cloudwego/hertz/pkg/app"
 )
 
+// 状态码常量
 const (
 	SuccessMsg = "success"
 
@@ -15,6 +16,7 @@ const (
 	RuleExecErrCode  = 20003
 )
 
+// BaseResp 统一 Http 响应格式
 type BaseResp struct {
 	Code    int         `json:"code"`
 	Message string      `json:"message"`

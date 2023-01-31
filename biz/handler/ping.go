@@ -9,7 +9,7 @@ import (
 	"github.com/cloudwego/hertz/pkg/common/utils"
 )
 
-// Ping .
+// Ping 测试
 func Ping(ctx context.Context, c *app.RequestContext) {
 	c.JSON(200, utils.H{
 		"message": "pong",

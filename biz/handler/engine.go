@@ -53,13 +53,14 @@ func HandleRunRule(ctx context.Context, c *app.RequestContext) {
 		return
 	}
 
-	// 编译表达式
+	// 编译表达式, 得到语法树的根节点
 	evaluatedExp, err := Compiler(req.Exp)
 	if err != nil {
 		BindResp(c, CompileErrCode, err.Error(), nil)
 		return
 	}
 
+	// 语法树中的参数注入
 	params, _ := getParams(req.Params)
 	err = evaluatedExp.Eval(params)
 	if err != nil {

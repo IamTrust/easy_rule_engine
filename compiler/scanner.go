@@ -1,3 +1,5 @@
+// 词法分析
+
 package compiler
 
 import (
@@ -222,6 +224,7 @@ func (scanner *Scanner) scanExpect1(kid token.Kind, ch rune) (string, token.Kind
 	}
 }
 
+// Scan 扫描输入的语句字符串, 生成 Token
 func (scanner *Scanner) Scan() (token.Token, error) {
 	var tok token.Token
 	var err error
@@ -299,6 +302,7 @@ func (scanner *Scanner) Scan() (token.Token, error) {
 	return tok, err
 }
 
+// Lexer 完成扫描, 将所有的 Token 保存在 []Token 中返回
 func (scanner *Scanner) Lexer() ([]token.Token, error) {
 	tokens := make([]token.Token, 0)
 

@@ -1,3 +1,5 @@
+// 初始化数据库配置
+
 package dal
 
 import (
@@ -5,7 +7,9 @@ import (
 	"gorm.io/gorm"
 )
 
-const MySQLDefaultDSN = "gorm:gorm@tcp(localhost:9910)/gorm?charset=utf8&parseTime=True&loc=Local"
+// MySQLDefaultDSN 使用 Docker 的话不要改这个, 直接用 docker-compose up 命令即可.
+// 不使用 Docker 的话改为自己的数据库即可, 且要用 ./sql/init.sql 创建记录表.
+const MySQLDefaultDSN = "gorm:gorm@tcp(10.211.55.7:9910)/gorm?charset=utf8&parseTime=True&loc=Local"
 
 var DB *gorm.DB
 

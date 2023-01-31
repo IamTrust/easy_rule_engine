@@ -9,7 +9,7 @@ import (
 
 // MySQLDefaultDSN 使用 Docker 的话不要改这个, 直接用 docker-compose up 命令即可.
 // 不使用 Docker 的话改为自己的数据库即可, 且要用 ./sql/init.sql 创建记录表.
-const MySQLDefaultDSN = "gorm:gorm@tcp(10.211.55.7:9910)/gorm?charset=utf8&parseTime=True&loc=Local"
+const MySQLDefaultDSN = "gorm:gorm@tcp(127.0.0.1:9910)/gorm?charset=utf8&parseTime=True&loc=Local"
 
 var DB *gorm.DB
 

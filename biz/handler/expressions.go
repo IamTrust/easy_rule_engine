@@ -83,7 +83,7 @@ func HandleRunExpression(ctx context.Context, c *app.RequestContext) {
 	}
 	// 该 ID 的表达式不存在
 	if exp.ID == 0 {
-		BindResp(c, RuleNotExistCode, "exp id "+strconv.Itoa(int(expReq.ExpId))+"does not exists", nil)
+		BindResp(c, RuleNotExistCode, "exp id "+strconv.Itoa(int(expReq.ExpId))+" does not exists", nil)
 		return
 	}
 	// 编译表达式, 得到语法树的根节点

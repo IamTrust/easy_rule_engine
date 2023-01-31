@@ -47,14 +47,14 @@
 
 运算符的优先级
 
-| 优先级 | 运算符                                  |
-| ------ | --------------------------------------- |
-| 0      | `或运算(两个竖线,与Markdown制表符冲突)` |
-| 1      | `&&`                                    |
-| 2      | `!` `-` `+`                             |
-| 3      | `>` `>=` `<` `<=` `==` `!=`             |
-| 4      | `+` `-`                                 |
-| 5      | `*` `/`                                 |
+| 优先级 | 运算符                         |
+|-----|-----------------------------|
+| 0   | `或运算(两个竖线,与Markdown制表符冲突)`  |
+| 1   | `&&`                        |
+| 2   | `!` `-` `+`                 |
+| 3   | `>` `>=` `<` `<=` `==` `!=` |
+| 4   | `+` `-`                     |
+| 5   | `*` `/`                     |
 
 ## 项目结构
 ``` shell
@@ -62,15 +62,15 @@
 ├── README.md
 ├── main.go     # 入口
 ├── blz         # Web 服务
-|   ├── dal     # 数据访问层
-|   ├── handler # 业务层
+│   ├── dal     # 数据访问层
+│   ├── handler # 业务层
 ├── compiler
-|   ├── lexical.go  # 字符判断
-|   ├── parser.go   # 语法分析
-|   ├── parser_test.go
-|   ├── planner.go  # 构建语法树
-|   ├── scanner.go  # 词法分析
-|   └── scanner_test.go
+│   ├── lexical.go  # 字符判断
+│   ├── parser.go   # 语法分析
+│   ├── parser_test.go
+│   ├── planner.go  # 构建语法树
+│   ├── scanner.go  # 词法分析
+│   └── scanner_test.go
 ├── executor
 │   ├── ast.go      # 抽象语法树定义
 │   ├── operator.go # 语法树执行
@@ -130,9 +130,7 @@ go run ./main.go
 
   ```json
   {
-    	// 表达式
       "exp": "a == 12345 || b > 0",
-    	// 表达式中的参数的值
       "params": {
           "a": 123456,
           "b": 1
@@ -140,15 +138,25 @@ go run ./main.go
   }
   ```
 
+  `exp`：规则表达式
+
+  `params`：表达式中参数的值
+
 - Response：
 
   ```json
   {
-      "code": 0,	// 状态码, 0 表示成功
-      "message": "success", // 状态消息, 表示响应成功
-      "data": true // 规则引擎执行结果, 上面的请求执行结果为 true
+      "code": 0,
+      "message": "success",
+      "data": true
   }
   ```
+  
+  `code`：响应码，0 表示成功
+  
+  `message`：响应消息，成功则为`success`，失败则为失败原因
+  
+  `data`：响应数据，即规则执行结果，这里为`true`，即参数(`a、b`)的值符合规则
 
 ### /api/engine/exp/new 接口
 
@@ -211,15 +219,18 @@ go run ./main.go
 请求方式：DELETE
 
 - Response：
-
+  
+  `ID` 不存在
+  
   ```json
-  // ID 不存在
   {
       "code": 20002,
       "message": "exp id 10 not exist",
       "data": null
   }
-  // 删除成功
+  ```
+  删除成功
+  ```json
   {
       "code": 0,
       "message": "success",
@@ -250,19 +261,24 @@ go run ./main.go
 
 - Response：
 
+  规则` a > 10 && b > 20`的执行结果`false`
+  
   ```json
   {
       "code": 0,
       "message": "success",
-      "data": false	// 规则 a > 10 && b > 20 的执行结果
+      "data": false	
   }
+  ```
   
-  // 规则不存在
+  规则不存在
+  
+  ```json
   {
       "code": 20002,
-      "message": "exp id 71does not exists",
+      "message": "exp id 71 does not exists",
       "data": null
   }
   ```
-
+  
   
